@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import "./weather.css";
 
 const WeatherApp = () => {
   // State variables to hold user input and weather data
   const [city, setCity] = useState('');
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
-
+console.log(city)
   // Function to handle city input change
   const handleCityChange = (e) => {
     setCity(e.target.value);
@@ -15,7 +16,8 @@ const WeatherApp = () => {
   const fetchWeatherData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${city}`);
+      const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=d0bec8948537487fb46192546240706&q=${city}`);
+      console.log(response)
       const data = await response.json();
       if (data.error) {
         alert('Failed to fetch weather data');
